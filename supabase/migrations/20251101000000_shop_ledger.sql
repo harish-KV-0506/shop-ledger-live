@@ -38,7 +38,7 @@ create index if not exists customers_owner_name_idx on public.customers (owner_i
 create index if not exists ledger_entries_owner_occurred_idx on public.ledger_entries (owner_id, occurred_at desc);
 create index if not exists ledger_entries_customer_occurred_idx on public.ledger_entries (customer_id, occurred_at desc);
 
-create or replace function public.set_updated_at()
+create or replace function public.shop_ledger_set_updated_at()
 returns trigger
 language plpgsql
 set search_path = ''
@@ -69,17 +69,17 @@ $$;
 drop trigger if exists set_shop_profiles_updated_at on public.shop_profiles;
 create trigger set_shop_profiles_updated_at
 before update on public.shop_profiles
-for each row execute function public.set_updated_at();
+for each row execute function public.shop_ledger_set_updated_at();
 
 drop trigger if exists set_customers_updated_at on public.customers;
 create trigger set_customers_updated_at
 before update on public.customers
-for each row execute function public.set_updated_at();
+for each row execute function public.shop_ledger_set_updated_at();
 
 drop trigger if exists set_ledger_entries_updated_at on public.ledger_entries;
 create trigger set_ledger_entries_updated_at
 before update on public.ledger_entries
-for each row execute function public.set_updated_at();
+for each row execute function public.shop_ledger_set_updated_at();
 
 drop trigger if exists create_shop_profile_after_signup on auth.users;
 create trigger create_shop_profile_after_signup

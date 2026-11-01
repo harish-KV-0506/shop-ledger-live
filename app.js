@@ -235,7 +235,10 @@ async function onAuthSubmit(event) {
       ? await supabase.auth.signUp({
         email,
         password,
-        options: { data: { shop_name: String(form.get('shopName')).trim() } },
+        options: {
+          data: { shop_name: String(form.get('shopName')).trim() },
+          emailRedirectTo: `${window.location.origin}${window.location.pathname}`,
+        },
       })
       : await supabase.auth.signInWithPassword({ email, password })
     if (result.error) throw result.error

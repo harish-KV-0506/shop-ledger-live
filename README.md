@@ -16,7 +16,7 @@ ShopLedger is an English-first, English/Tamil shop ledger for tracking customer 
 
 Requirements: Node.js 22+ and a Supabase project.
 
-1. In a separate Supabase project, run [`supabase/migrations/20251101000000_shop_ledger.sql`](./supabase/migrations/20251101000000_shop_ledger.sql) in the SQL Editor.
+1. The live deployment uses the separate `harish-KV-0506's Project` Supabase project (`qyqgntxnldtgxpdsciyd`), not the ToDoo project. Its schema and RLS policies are already applied. For a different Supabase project, run [`supabase/migrations/20251101000000_shop_ledger.sql`](./supabase/migrations/20251101000000_shop_ledger.sql) in the SQL Editor.
 2. Copy `.env.example` to `.env` and set `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` using the project's URL and publishable/anon key. These browser values are public by design; never put a `service_role` key in this app.
 3. Install and start the app:
 
@@ -25,9 +25,9 @@ Requirements: Node.js 22+ and a Supabase project.
    npm run dev
    ```
 
-4. In Supabase Authentication, configure the site URL and redirect URLs for local development and the eventual deployed site. Configure SMTP before inviting real users; Supabase's default email service is rate-limited.
+4. In Supabase Authentication, configure the site URL and redirect URLs for local development and the deployed site. Signup and password reset redirect to the current app URL. Configure custom SMTP before inviting many users; Supabase's default email service is rate-limited.
 
-Until Supabase credentials and the SQL migration are configured, the app displays a setup notice and account/data operations do not work.
+The deployed GitHub Pages build has its Supabase client settings configured. Local development still requires `.env`. Without Supabase credentials, the app displays a setup notice and account/data operations do not work.
 
 ## Deploy to GitHub Pages
 
