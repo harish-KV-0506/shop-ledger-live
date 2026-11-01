@@ -1,0 +1,17 @@
+{
+  "name": "ShopLedger — Tamil & English Shop Accounts",
+  "short_name": "ShopLedger",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0b1528",
+  "theme_color": "#0b1528",
+  "description": "A private, bilingual shop ledger for customer credit and payments.",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
